@@ -4,11 +4,9 @@ module GOVUKDesignSystemFormBuilder
     private
 
       def localised_text(context)
-        key = localisation_key(context)
-
-        return nil unless I18n.exists?(key)
-
-        I18n.translate(key)
+        I18n.translate(
+          localisation_key(context), default: nil
+        )
       end
 
       def localisation_key(context)
@@ -19,8 +17,9 @@ module GOVUKDesignSystemFormBuilder
 
       def schema(context)
         schema_root(context)
-          .push(@object_name, @attribute_name)
+          .push(@object_name, @attribute_name, @value)
           .map { |e| e == :__context__ ? context : e }
+          .compact
           .join('.')
       end
 

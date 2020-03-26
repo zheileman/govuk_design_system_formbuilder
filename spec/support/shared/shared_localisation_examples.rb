@@ -6,7 +6,13 @@ shared_examples 'a field that supports setting the label via localisation' do
   let(:localisations) { LOCALISATIONS }
 
   context 'localising when no text is supplied' do
-    let(:expected_label) { I18n.translate("helpers.label.person.#{attribute}") }
+    let(:localisation_key) {
+      defined?(value) ? "#{attribute}.#{value}" : attribute
+    }
+    let(:expected_label) {
+      I18n.translate(localisation_key, scope: 'helpers.label.person')
+    }
+
     subject { builder.send(*args) }
 
     specify 'should set the label from the locales' do
