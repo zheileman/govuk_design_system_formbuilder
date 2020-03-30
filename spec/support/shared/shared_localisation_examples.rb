@@ -7,7 +7,7 @@ shared_examples 'a field that supports setting the label via localisation' do
 
   context 'localising when no text is supplied' do
     let(:localisation_key) {
-      defined?(value) ? "#{attribute}.#{value}" : attribute
+      defined?(value) ? "#{attribute}_options.#{value}" : attribute
     }
     let(:expected_label) {
       I18n.translate(localisation_key, scope: 'helpers.label.person')

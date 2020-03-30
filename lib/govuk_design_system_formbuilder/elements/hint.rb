@@ -4,13 +4,12 @@ module GOVUKDesignSystemFormBuilder
       include Traits::Hint
       include Traits::Localisation
 
-      def initialize(builder, object_name, attribute_name, text, value = nil, radio: false, checkbox: false)
+      def initialize(builder, object_name, attribute_name, text, value = nil, type: nil)
         super(builder, object_name, attribute_name)
 
         @value          = value
+        @type           = type.to_s.inquiry
         @hint_text      = hint_text(text)
-        @radio_class    = radio_class(radio)
-        @checkbox_class = checkbox_class(checkbox)
       end
 
       def html
@@ -29,15 +28,15 @@ module GOVUKDesignSystemFormBuilder
       end
 
       def hint_classes
-        %w(govuk-hint).push(@radio_class, @checkbox_class).compact
+        %w(govuk-hint).push(radio_class, checkbox_class).compact
       end
 
-      def radio_class(radio)
-        radio ? 'govuk-radios__hint' : nil
+      def radio_class
+        'govuk-radios__hint' if @type.radio?
       end
 
-      def checkbox_class(checkbox)
-        checkbox ? 'govuk-checkboxes__hint' : nil
+      def checkbox_class
+        'govuk-checkboxes__hint' if @type.checkbox?
       end
     end
   end

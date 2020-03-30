@@ -1,4 +1,5 @@
 require 'active_support/configurable'
+require 'active_support/core_ext/string/inquiry'
 
 [%w(traits *.rb), %w(*.rb), %w(elements ** *.rb), %w(containers ** *.rb)]
   .flat_map { |matcher| Dir.glob(File.join(__dir__, 'govuk_design_system_formbuilder', *matcher)) }

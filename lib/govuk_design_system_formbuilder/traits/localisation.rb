@@ -17,10 +17,21 @@ module GOVUKDesignSystemFormBuilder
 
       def schema(context)
         schema_root(context)
-          .push(@object_name, @attribute_name, @value)
+          .push(*schema_path)
           .map { |e| e == :__context__ ? context : e }
-          .compact
           .join('.')
+      end
+
+      def schema_path
+        [].tap do |path|
+          path.push(@object_name)
+
+          if @value.present?
+            path.push("#{@attribute_name}_options", @value)
+          else
+            path.push(@attribute_name)
+          end
+        end
       end
 
       def schema_root(context)
