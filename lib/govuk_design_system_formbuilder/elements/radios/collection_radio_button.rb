@@ -41,11 +41,11 @@ module GOVUKDesignSystemFormBuilder
       private
 
         def hint_element
-          @hint_element ||= Elements::Hint.new(@builder, @object_name, @attribute_name, @hint_text, @value, radio: true)
+          @hint_element ||= Elements::Hint.new(@builder, @object_name, @attribute_name, @hint_text, @value, type: :radio)
         end
 
         def label_element
-          @label_element ||= Elements::Label.new(@builder, @object_name, @attribute_name, text: @label_text, value: @value, radio: true, size: label_size, link_errors: @link_errors)
+          @label_element ||= Elements::Label.new(@builder, @object_name, @attribute_name, text: @label_text, value: @value, type: :radio, size: label_size, link_errors: @link_errors)
         end
 
         def label_size

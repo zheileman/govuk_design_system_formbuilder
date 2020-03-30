@@ -3,14 +3,13 @@ module GOVUKDesignSystemFormBuilder
     class Label < Base
       include Traits::Localisation
 
-      def initialize(builder, object_name, attribute_name, text: nil, value: nil, size: nil, hidden: false, radio: false, checkbox: false, tag: nil, link_errors: true)
+      def initialize(builder, object_name, attribute_name, text: nil, value: nil, size: nil, hidden: false, type: nil, tag: nil, link_errors: true)
         super(builder, object_name, attribute_name)
 
         @value          = value # used by field_id
+        @type           = type.to_s.inquiry
         @text           = label_text(text, hidden)
         @size_class     = label_size_class(size)
-        @radio_class    = radio_class(radio)
-        @checkbox_class = checkbox_class(checkbox)
         @tag            = tag
         @link_errors    = link_errors
       end
@@ -32,7 +31,7 @@ module GOVUKDesignSystemFormBuilder
           @attribute_name,
           value: @value,
           for: field_id(link_errors: @link_errors),
-          class: %w(govuk-label).push(@size_class, @weight_class, @radio_class, @checkbox_class).compact
+          class: %w(govuk-label).push(@size_class, @weight_class, radio_class, checkbox_class).compact
         ) do
           @text
         end
@@ -48,12 +47,12 @@ module GOVUKDesignSystemFormBuilder
         end
       end
 
-      def radio_class(radio)
-        radio ? 'govuk-radios__label' : nil
+      def radio_class
+        'govuk-radios__label' if @type.radio?
       end
 
-      def checkbox_class(checkbox)
-        checkbox ? 'govuk-checkboxes__label' : nil
+      def checkbox_class
+        'govuk-checkboxes__label' if @type.checkbox?
       end
 
       def label_size_class(size)

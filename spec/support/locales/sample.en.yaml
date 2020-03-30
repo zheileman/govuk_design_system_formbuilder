@@ -3,7 +3,8 @@ helpers:
     person:
       name: Who goes there?
       cv: Tell us about your employment history
-      favourite_colour:
+      favourite_colour: What is your favourite colour?
+      favourite_colour_options:
         red: Red
       photo: Upload a recent passport photo
   legend:

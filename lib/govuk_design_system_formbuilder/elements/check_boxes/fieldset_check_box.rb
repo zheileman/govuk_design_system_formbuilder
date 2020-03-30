@@ -55,11 +55,11 @@ module GOVUKDesignSystemFormBuilder
         end
 
         def label_element
-          @label_element ||= Elements::Label.new(@builder, @object_name, @attribute_name, checkbox: true, value: @value, **@label, link_errors: @link_errors)
+          @label_element ||= Elements::Label.new(@builder, @object_name, @attribute_name, type: :checkbox, value: @value, **@label, link_errors: @link_errors)
         end
 
         def hint_element
-          @hint_element ||= Elements::Hint.new(@builder, @object_name, @attribute_name, @hint_text, @value, checkbox: true)
+          @hint_element ||= Elements::Hint.new(@builder, @object_name, @attribute_name, @hint_text, @value, type: :checkbox)
         end
 
         def conditional_classes
