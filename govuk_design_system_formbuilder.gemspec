@@ -7,7 +7,7 @@ METADATA = {
   "bug_tracker_uri"   => "https://github.com/DFE-Digital/govuk_design_system_formbuilder/issues",
   "changelog_uri"     => "https://github.com/DFE-Digital/govuk_design_system_formbuilder/releases",
   "documentation_uri" => "https://www.rubydoc.info/gems/govuk_design_system_formbuilder/GOVUKDesignSystemFormBuilder/Builder",
-  "homepage_uri"      => "https://govuk-form-builder.netlify.com",
+  "homepage_uri"      => "https://govuk-form-builder.netlify.app",
   "source_code_uri"   => "https://github.com/DFE-Digital/govuk_design_system_formbuilder"
 }.freeze
 
@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.version     = GOVUKDesignSystemFormBuilder::VERSION
   s.authors     = ["Peter Yates"]
   s.email       = ["peter.yates@graphia.co.uk"]
-  s.homepage    = "https://govuk-form-builder.netlify.com"
+  s.homepage    = "https://govuk-form-builder.netlify.app"
   s.summary     = "GOV.UK-compliant Rails form builder"
   s.description = "A Rails form builder that generates form inputs adhering to the GOV.UK Design System"
   s.license     = "MIT"
@@ -31,10 +31,10 @@ Gem::Specification.new do |s|
   end
 
   s.add_development_dependency("rubocop-govuk", "~> 2")
-  s.add_development_dependency("pry", "~> 0.12.2")
+  s.add_development_dependency("pry", "~> 0.13.0")
   s.add_development_dependency("pry-byebug", "~> 3.7", ">= 3.7.0")
   s.add_development_dependency("rspec-html-matchers", "~> 0")
-  s.add_development_dependency("rspec-rails", "~> 3.8")
+  s.add_development_dependency("rspec-rails", "~> 4.0")
   s.add_development_dependency("simplecov", "~> 0")
 
   # Required for the guide
@@ -42,7 +42,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency("adsf-live", "~> 1.4.2")
   s.add_development_dependency("htmlbeautifier", "~> 1.3.1")
   s.add_development_dependency("nanoc", "~> 4.11")
-  s.add_development_dependency("rouge", "~> 3.16.0")
+  s.add_development_dependency("rouge", "~> 3.17.0")
   s.add_development_dependency("rubypants", "~> 0.7.0")
   s.add_development_dependency("sassc", "~> 2.2.1")
   s.add_development_dependency("sass")
