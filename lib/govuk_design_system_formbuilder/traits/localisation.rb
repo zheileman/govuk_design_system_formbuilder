@@ -4,15 +4,18 @@ module GOVUKDesignSystemFormBuilder
     private
 
       def localised_text(context)
-        I18n.translate(
-          localisation_key(context), default: nil
-        )
-      end
-
-      def localisation_key(context)
         return nil unless @object_name.present? && @attribute_name.present?
 
-        schema(context)
+        I18n.translate(localisation_key(context), default: nil) ||
+          I18n.translate(localisation_key(context, html: true), default: nil).try(:html_safe)
+      end
+
+      def localisation_key(context, html: false)
+        if html
+          schema(context).concat('_html')
+        else
+          schema(context)
+        end
       end
 
       def schema(context)
